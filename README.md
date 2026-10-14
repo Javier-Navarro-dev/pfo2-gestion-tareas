@@ -13,7 +13,7 @@ capturas/          Capturas de pruebas exitosas
 
 ## Ejecución
 ```bash
-git clone <   https://github.com/Javier-Navarro-dev/pfo2-gestion-tareas.git>
+git clone <https://github.com/Javier-Navarro-dev/pfo2-gestion-tareas.git>
 cd <carpeta>
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
