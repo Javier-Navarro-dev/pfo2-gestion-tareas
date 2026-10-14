@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PFO 2 - Sistema de Gestión de Tareas</title>
+<style>
+  body{font-family:system-ui,sans-serif;max-width:820px;margin:2rem auto;padding:0 1rem;line-height:1.6}
+  img{max-width:100%;border:1px solid #8884;border-radius:6px;margin-bottom:1.5rem}
+  code{background:#8882;padding:.1rem .35rem;border-radius:4px}
+</style>
+</head>
+<body>
+<h1>PFO 2 – Sistema de Gestión de Tareas</h1>
+<p>API REST en Flask con registro, login y página de bienvenida protegida. Los usuarios se guardan en SQLite con contraseñas hasheadas (Werkzeug, scrypt).</p>
+<p>Código y documentación completa en el repositorio: ver <code>servidor.py</code>, <code>cliente.py</code> y <code>README.md</code>.</p>
+
+<h2>Endpoints</h2>
+<ul>
+  <li><code>POST /registro</code>: 201 / 400 / 409</li>
+  <li><code>POST /login</code>: 200 / 401</li>
+  <li><code>GET /tareas</code>: HTML de bienvenida (200) o 401 sin sesión</li>
+</ul>
+
+<h2>Capturas de pruebas</h2>
+<h3>1. Registro (201)</h3><img src="capturas/01-registro.png" alt="Registro">
+<h3>2. Usuario duplicado (409)</h3><img src="capturas/02-duplicado.png" alt="Duplicado">
+<h3>3. Login con clave incorrecta (401)</h3><img src="capturas/03-login-error.png" alt="Login error">
+<h3>4. /tareas sin sesión (401)</h3><img src="capturas/04-tareas-sin-sesion.png" alt="Tareas sin sesión">
+<h3>5. Login correcto (200)</h3><img src="capturas/05-login-ok.png" alt="Login ok">
+<h3>6. /tareas con sesión (200)</h3><img src="capturas/06-tareas-ok.png" alt="Tareas ok">
+<h3>7. Contraseña hasheada en SQLite</h3><img src="capturas/07-base-hash.png" alt="Hash en la base">
+
+<h2>Respuestas conceptuales</h2>
+<h3>¿Por qué hashear contraseñas?</h3>
+<p>Si la base se filtra, las claves en texto plano quedan expuestas y se pueden probar en otros sitios. El hash es de un solo sentido: para validar se hashea lo que ingresa el usuario y se compara. El salt evita tablas precalculadas y un algoritmo lento (scrypt, bcrypt) encarece la fuerza bruta.</p>
+<h3>Ventajas de SQLite en este proyecto</h3>
+<ul>
+  <li>No requiere servidor ni instalación: viene con Python.</li>
+  <li>La base es un único archivo, fácil de copiar y entregar.</li>
+  <li>Cero configuración, ideal para proyectos pequeños y pruebas.</li>
+  <li>Los datos persisten al reiniciar el servidor.</li>
+  <li>SQL estándar con restricciones como <code>UNIQUE</code> y <code>NOT NULL</code>.</li>
+</ul>
+</body>
+</html>

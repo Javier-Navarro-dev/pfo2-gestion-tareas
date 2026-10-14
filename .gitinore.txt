@@ -1,4 +1,0 @@
-tareas.db
-venv/
-__pycache__/
-cookies.txt

@@ -47,10 +47,24 @@ En Windows PowerShell usá `curl.exe` y comillas escapadas, o directamente el cl
 python cliente.py
 ```
 
-## Capturas
-Guardá en `capturas/` y enlazá aquí: registro (201), usuario duplicado (409), login erróneo (401),
-login correcto (200), `/tareas` sin sesión (401), `/tareas` con sesión (HTML) y la tabla `usuarios`
-mostrando el hash.
+## Capturas de pruebas (Postman)
+| # | Prueba | Resultado |
+|---|---|---|
+| 1 | Registro de usuario | 201 Created |
+| 2 | Registro duplicado | 409 Conflict |
+| 3 | Login con contraseña incorrecta | 401 Unauthorized |
+| 4 | `/tareas` sin sesión | 401 Unauthorized |
+| 5 | Login correcto | 200 OK |
+| 6 | `/tareas` con sesión (HTML de bienvenida) | 200 OK |
+| 7 | Tabla `usuarios` con la contraseña hasheada | scrypt |
+
+![Registro](capturas/01-registro.png)
+![Duplicado](capturas/02-duplicado.png)
+![Login con error](capturas/03-login-error.png)
+![Tareas sin sesión](capturas/04-tareas-sin-sesion.png)
+![Login correcto](capturas/05-login-ok.png)
+![Tareas con sesión](capturas/06-tareas-ok.png)
+![Hash en la base](capturas/07-base-hash.png)
 
 ## GitHub Pages
 GitHub Pages sólo aloja sitios estáticos, así que **no puede ejecutar Flask**. Se publica la
